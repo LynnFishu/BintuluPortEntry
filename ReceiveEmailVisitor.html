@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>BintuluPortEntry</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-4---Payment-Form.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="assets/css/x-dropdown.css">
+</head>
+
+<body>
+    <div class="row register-form" style="background: url(&quot;assets/img/bgreg.png&quot;) center / auto no-repeat;">
+        <div class="col-md-8 offset-md-2" style="background: url(&quot;assets/img/bgreg.png&quot;) center / auto no-repeat;">
+            <form class="border rounded custom-form" style="background: url(&quot;assets/img/bgreg.png&quot;) center / auto no-repeat;box-shadow: 1px 1px 10px var(--bs-gray-500);">
+                <h1 style="padding-bottom: 5px;border-bottom-color: rgba(108,174,224,0);margin-bottom: 15px;"><span style="color: rgb(0, 0, 0);">E-mail Sent</span></h1>
+                <h6 style="border-color: var(--bs-link-color);padding-bottom: 5px;padding-top: 0px;margin-top: 0px;margin-bottom: 15px;"><strong>Please check your email for the link to the mandatory safety induction video, which you must watch and complete within the next 24 hours before entering Bintulu Port Sdn. Bhd. This step is crucial to ensure your safety and compliance with our port regulations. After finishing watching the video then you may proceed.</strong></h6><div style="display: flex;flex-direction: column;align-items: center;justify-content: center;">
+    <form class="border rounded custom-form" style="text-align: center;">
+        <div>
+            <video id="safetyVideo" width="560" height="315" playsinline style="margin-bottom: 0px;">
+                <source src="SafetyBriefing.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div>
+            <button id="play-button" type="button" class="btn btn-light border rounded-pill shadow submit-button">
+                Play Video
+            </button>
+            <button id="continue-button" type="button" class="btn btn-light border rounded-pill shadow submit-button" style="display: none;">
+                Continue
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    const video = document.getElementById('safetyVideo');
+    const continueButton = document.getElementById('continue-button');
+    const playButton = document.getElementById('play-button');
+
+    // Function to play the video
+    function playVideo() {
+        video.play().then(() => {
+            playButton.style.display = 'none'; // Hide play button after starting
+        }).catch(error => {
+            console.log('Autoplay was prevented:', error);
+            // If autoplay fails, show the play button for user interaction
+            playButton.style.display = 'block';
+        });
+    }
+
+    // Show the play button if autoplay fails
+    video.addEventListener('play', function() {
+        playButton.style.display = 'none';
+    });
+
+    // Show the continue button when the video ends
+    video.addEventListener('ended', function() {
+        continueButton.style.display = 'block';
+    });
+
+    // Start the video when the play button is clicked
+    playButton.addEventListener('click', function() {
+        playVideo();
+    });
+
+    // Redirect to Approval.html when continue button is clicked
+    continueButton.addEventListener('click', function() {
+        window.location.href = 'Approval.html';
+    });
+
+    // Initially attempt to play the video
+    playVideo();
+</script>
+
+            </form>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/Payment-Form-script.js"></script>
+</body>
+
+</html>
