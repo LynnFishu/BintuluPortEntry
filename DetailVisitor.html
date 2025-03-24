@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>BintuluPortEntry</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Bootstrap-4---Payment-Form.css">
+    <link rel="stylesheet" href="assets/css/Pretty-Registration-Form-.css">
+    <link rel="stylesheet" href="assets/css/x-dropdown.css">
+</head>
+
+<body><body>
+    <div class="row register-form">
+        <div class="col-md-8 offset-md-2">
+            <form id="visitorForm" class="border rounded custom-form" style="background: url('assets/img/bgreg.png') center / auto no-repeat; box-shadow: 1px 1px 10px var(--bs-gray-500);">
+                <h1 style="padding-bottom: 5px;border-bottom-color: rgba(108,174,224,0);margin-bottom: 15px;">
+                    <span style="color: rgb(0, 0, 0);">Visitor Details</span>
+                </h1>
+                <h6 style="border-color: var(--bs-link-color);padding-bottom: 5px;padding-top: 0px;margin-top: 0px;margin-bottom: 15px;">
+                    <sub><span style="color: rgb(0, 0, 0);">Step 3 of 5</span></sub>
+                </h6>
+                <div class="row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="id-type-input">ID Type <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <div class="dropdown">
+                            <button id="dropdownButton" class="btn btn-primary dropdown-toggle w-100" aria-expanded="false" data-bs-toggle="dropdown" type="button">
+                                ...
+                            </button>
+                            <div class="dropdown-menu w-100">
+                                <a class="dropdown-item" href="#" onclick="updateDropdownText('MyKad')">MyKad</a>
+                                <a class="dropdown-item" href="#" onclick="updateDropdownText('MyTentera')">MyTentera</a>
+                                <a class="dropdown-item" href="#" onclick="updateDropdownText('MyPR')">MyPR</a>
+                                <a class="dropdown-item" href="#" onclick="updateDropdownText('MyPolis')">MyPolis</a>
+                            </div>
+                        </div>
+                        <input type="hidden" id="id-type-input" name="idType" required />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="id-number-input">ID Number <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="number" id="id-number-input" name="idNumber" required />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="phone-number-input">Phone Number <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="number" id="phone-number-input" name="phoneNumber" required />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="vehicle-plate-input">Vehicle Plate Number <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" id="vehicle-plate-input" name="vehiclePlate" required />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="vehicle-colour-input">Vehicle Colour <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" id="vehicle-colour-input" name="vehicleColour" required />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="vehicle-type-input">Vehicle Type <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-sm-6 input-column">
+                        <input class="form-control" type="text" id="vehicle-type-input" name="vehicleType" required />
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-4 label-column">
+                        <label class="col-form-label" for="photo-input">Upload Photo <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-sm-4 col-xxl-6 input-column">
+                        <input class="form-control" type="file" id="photo-input" name="photoInput" accept="image/*" required />
+                    </div>
+                </div>
+                <button class="btn btn-light border rounded-pill shadow submit-button" type="submit">Continue</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function updateDropdownText(value) {
+            document.getElementById('dropdownButton').textContent = value;
+            document.getElementById('id-type-input').value = value;
+        }
+
+        document.getElementById('visitorForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var requiredFields = document.querySelectorAll('#visitorForm [required]');
+            var allFilled = Array.from(requiredFields).every(function(field) {
+                return field.value.trim() !== '' || (field.type === 'file' && field.files.length > 0);
+            });
+
+            if (allFilled) {
+                // Redirect to ReceiveEmail.html after successful validation
+                window.location.href = 'ReceiveEmailVisitor.html';
+            } else {
+                alert('Please fill out all required fields before continuing.');
+            }
+        });
+    </script>
+</body>
+
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/Payment-Form-script.js"></script>
+</body>
+
+</html>
